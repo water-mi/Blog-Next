@@ -1,23 +1,1462 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ page.title }} | {{ title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
 
-{% block content %}
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":32,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script src="/sources/prism.js"></script>
+<link rel="stylesheet" href="/sources/prism.css"/>
+<link rel="stylesheet" href="/sources/next_custom.css"/>
+<link href="/katexify/katex.min.css" rel="stylesheet" />
+
+
+  <meta name="description" content="前几天在SAO吧里看到了SAO21的先导（去年12月份发的），再看看今天的日期…禁不住感慨一波川原砾的魔幻打字速度。 既然这样，在没出正式版前，先发一波先（tǔ）评（cáo）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刀剑神域第21册先导吐槽">
+<meta property="og:url" content="https://blog.water-mi.com/2018/08/01/SAO-21/index.html">
+<meta property="og:site_name" content="water_mi&#39;s Blog">
+<meta property="og:description" content="前几天在SAO吧里看到了SAO21的先导（去年12月份发的），再看看今天的日期…禁不住感慨一波川原砾的魔幻打字速度。 既然这样，在没出正式版前，先发一波先（tǔ）评（cáo）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/01/PwXibq.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/01/PwXkV0.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/01/PwXeGF.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/01/PwXm24.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/01/PwXnxJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/01/PwXKM9.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0pCMF.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0pJit.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0pwLQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0AUtH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0EXdS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0VEoF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0V1eK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0ZZ0f.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0ZNAU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0KCQJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P01DvF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P01L5t.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0cAFP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0ctlF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0cg6e.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0cItP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/02/P0cqXQ.png">
+<meta property="article:published_time" content="2018-08-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-19T12:26:00.496Z">
+<meta property="article:author" content="water_mi">
+<meta property="article:tag" content="[随便写写]吐槽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/01/PwXibq.md.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.water-mi.com/2018/08/01/SAO-21/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>刀剑神域第21册先导吐槽 | water_mi's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">water_mi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Have a good time!</p>
+      
+    
+    
   </div>
 
-{% endblock %}
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">56</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">3</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">81</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br/>友链</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br/>站点地图</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/water-mi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.water-mi.com/2018/08/01/SAO-21/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="water_mi"/>
+      <meta itemprop="description" content="接下来的日子里，要更加努力"/>
+      <meta itemprop="image" content="/sources/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="water_mi's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">刀剑神域第21册先导吐槽
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-01 08:00:00" itemprop="dateCreated datePublished" datetime="2018-08-01T08:00:00+08:00">2018-08-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-19 20:26:00" itemprop="dateModified" datetime="2020-01-19T20:26:00+08:00">2020-01-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前几天在SAO吧里看到了SAO21的先导（去年12月份发的），再看看今天的日期…<br>禁不住感慨一波川原砾的魔幻打字速度。</p>
+<p>既然这样，在没出正式版前，先发一波先（tǔ）评（cáo）。</p>
+<span id="more"></span>
+<h1 id="EP0-先导链接"><a href="#EP0-先导链接" class="headerlink" title="EP0 - 先导链接"></a>EP0 - 先导链接</h1><p><a target="_blank" rel="noopener" href="https://tieba.baidu.com/p/5473153615">[自翻][川原 砾][Sword Art Online][Unital Ring][+a]</a></p>
+<p>感谢汉化组！</p>
+<h1 id="EP1-标题"><a href="#EP1-标题" class="headerlink" title="EP1 - 标题"></a>EP1 - 标题</h1><p>首先是标题:本章的标题叫做[Unital Ring]，暂时没有本土化翻译，<br>所以不翻了（就我这垃圾外语水平），还是[Moon Cradle - 月之摇篮]更好翻译</p>
+<h1 id="EP2-设定"><a href="#EP2-设定" class="headerlink" title="EP2 - 设定"></a>EP2 - 设定</h1><p>PS : 以下内容为日文维基中[可能]和本作有关的设定</p>
+<p>出自[Ordinal Scale - 序列之争]部分，有可能在文库本内有所改动。<br>这里的OS设定是指游戏中的设定，与电影还是有一点关系的</p>
+<p><img src="https://s1.ax1x.com/2018/08/01/PwXibq.md.png" alt="PwXibq.md.png"></p>
+<p>从文中，我们可以看出，这一次设定比ALO篇要容易，只有三种职业，<br>而且没有魔（膜）法师，因为是借用序列之争的设定，所以川原老爷子自然把序列之争的Augma搬了过来，<br>Augma就是那个目前造不出来的高级AR【看过的总该有点印象】。<br>重点是，该篇的设定和SAO一样，是没有魔法师的，回血只能靠道具</p>
+<p><img src="https://s1.ax1x.com/2018/08/01/PwXkV0.md.png" alt="PwXkV0.md.png"></p>
+<p>[对DBA游击队员]应该就类似于玩家…而[适合者]应该就类似于对应完全潜行适应者<br>不断工作会获得更高收入这点…</p>
+<blockquote>
+<p>贪玩蓝月，点一下，玩一年，装备回收还可兑换现金</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2018/08/01/PwXeGF.md.png" alt="PwXeGF.md.png"></p>
+<p>这没什么好分（tǔ）析（cáo）的，总而言之就是类似于联合国和联合国维和部队吧</p>
+<p><img src="https://s1.ax1x.com/2018/08/01/PwXm24.md.png" alt="PwXm24.md.png"></p>
+<p>这里讲了一些主要派系，[Aggressor]有点类似于[SAO]中的“微笑棺木”，但又不能说完全像。</p>
+<p>[Arbiter]有点类似于【三体】里面的拯救派…比较苟的一个派系</p>
+<p>[Unital]就是本篇的对立方了【应该吧】，就有点像三体人…</p>
+<p><img src="https://s1.ax1x.com/2018/08/01/PwXnxJ.png" alt="PwXnxJ.png"></p>
+<p>[DBA]就是本篇的主要敌人了，竟然拿动物为蓝本…<br>而[D-Tuner]与[Augma]，[Blade Type]与SAO中的刀剑，<br>[Gun Type]与GGO中的枪械，[Wand Type]与ALO中的法杖也是相类似的<br>说好的没有魔法师呢…</p>
+<p><img src="https://s1.ax1x.com/2018/08/01/PwXKM9.md.png" alt="PwXKM9.md.png"></p>
+<p>怎么说呢，就是传统RPG里面的原材料吧…</p>
+<h1 id="EP3-原文"><a href="#EP3-原文" class="headerlink" title="EP3 - 原文"></a>EP3 - 原文</h1><blockquote>
+<p>在分析原文之前，我花了一些时间把18章又看了一遍，发现了一些东西：</p>
+<ul>
+<li>桐人的养父叫桐谷峰嵩，养母叫桐谷翠</li>
+<li>桐人在underworld里有一个复制体（复制星王），但亚丝娜没有，复制星王在21章中可能很重要</li>
+<li>茅场晶彦又死了一次，但貌似还没死透[阴魂不散的男人]</li>
+</ul>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0pCMF.md.png" alt="P0pCMF.md.png"></p>
+<p>首先，这是一段对话，应该是茅场和星王的对话，推测如下:</p>
+<blockquote>
+<ul>
+<li>“原本应该和肉体一起消失不见的感情正在复活了”可以看出说话的人已经死了，但没有死透（有的人死了，他还活着）</li>
+<li>另一个种子应该就是[The Seed]，原本的种子就是生成艾恩葛朗特的那个</li>
+<li>“托付给他”，在SAO篇的结尾，茅场给了桐人[The Seed]，以及另一方最初说“我”，可以看出就是星王（桐人复制体）和茅场的对话</li>
+<li>在第18章里面，星王最后是活了200多年，所以星王说“大出不知多少岁”这种话。而且星王还和比嘉健说要去找茅场（当时比嘉还认为茅场死了）</li>
+</ul>
+</blockquote>
+<p>这里的[她]应该指的是结衣[唯]，因为在SAO篇中有提到，结衣是被茅场制作出来后抛弃的，<br>但并不太可能是爱丽丝，因为爱丽丝暂时没有展现出控制电脑的能力，而结衣是有的（详见序列之争）</p>
+<p>[连接体]，指的应该就是连接到[The Seed]的各个服务器（例如GGO）,[统一]指的就是所有服务器归结到同一个服务器上吧…</p>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0pJit.png" alt="P0pJit.png"></p>
+<ul>
+<li>首先我最想吐槽的，是桐人亲生父母的名字，个人觉得不怎么好听…但[鸣人]应该就是官方玩梗了，从上文可以看出，桐人的父母是遭遇车祸而死的。</li>
+<li>“翠阿姨”就是之前提到过的桐人的养母“桐谷翠”</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0pwLQ.png" alt="P0pwLQ.png"></p>
+<ul>
+<li>“唯”就是结衣[Yui]的另一种翻译，这一段就是官方搞事</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0AUtH.png" alt="P0AUtH.png"></p>
+<ul>
+<li>这个所谓[视听觉双向通信探测仪]应该就是动画里面那个在桐人肩上的类似于摄像头的东西。</li>
+<li>[Augma]就是序列之争里那个耳机式的AR，[AmuSphere]就是ALO篇的VR</li>
+<li>桐人老爷你怕是忘了你的女朋友被这个[Augma]害的多惨</li>
+<li>MR[混合现实]有点类似于AR，简单来说，就是AR和VR的结合</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0EXdS.png" alt="P0EXdS.png"></p>
+<ul>
+<li>小唯是桐人的对结衣的爱称</li>
+<li>这个纯白色高塔应该指的就是UnderWorld里公理教会（现在属于人界统一会议）的“中央大教堂”</li>
+<li>因为桐人在回归RealWorld后让比嘉健消除了他在UnderWorld中加速时200年的记忆，但并没有消除这之前的，<br>所以桐人没有忘记之前在UnderWorld中的一些事情，所以桐人才会有（应该要消除所有记忆）这类的话。</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0VEoF.png" alt="P0VEoF.png"></p>
+<ul>
+<li>从这里可以看出川原老贼是直接把序列之争当做正篇了…而且两件事时隔半年。</li>
+<li>说好的OS是承接圣母圣咏和Alicezation呢？但是这么说来，并没有什么问题…因为Alicezation篇只有一两个月。</li>
+<li><del>川原吃设定系列</del></li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0V1eK.png" alt="P0V1eK.png"></p>
+<hr>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0ZZ0f.png" alt="P0ZZ0f.png"></p>
+<ul>
+<li>这一段是个人感觉最好笑的一段</li>
+<li>我们以后就叫桐人老爷“中毒网友废人”算了</li>
+<li>下面这两大段讲的就是9-18章的大致内容…汉化组是真的皮</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0ZNAU.png" alt="P0ZNAU.png"></p>
+<ul>
+<li>菊冈诚二郎【简称菊冈】就是坑桐人老爷的人，GGO事件就是他委托桐人老爷去办的，<br>送桐人去实验STL也是他弄得，不过…没有他，桐人就不会掺和死枪事件，也不会被注射琥珀胆碱，<br>更不会进入UnderWorld…但也不会认识诗乃和爱丽丝。那么在OS事件中…桐人… 不想了</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0KCQJ.png" alt="P0KCQJ.png"></p>
+<ul>
+<li>这是继西莉卡、诗乃后第三个选择猫妖的女主角…就亚丝娜…算了</li>
+<li>这里为桐人老爷接下来的修罗场做铺垫</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P01DvF.png" alt="P01DvF.png"></p>
+<ul>
+<li>其实爱丽丝真的是一个命运复杂的人，被最高祭司夺了记忆拿不回来不说，就连来到RealWorld还要被人做实验</li>
+<li>PS：在失忆前，爱丽丝喜欢优吉欧，失忆以后喜欢桐人</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P01L5t.png" alt="P01L5t.png"></p>
+<ul>
+<li>从这里可以看出，爱丽丝不太适应RealWorld的生活，所以才想回到UnderWorld</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0cAFP.png" alt="P0cAFP.png"></p>
+<ul>
+<li>神代凛子博士就是茅场的妻子，但她和SAO事件并没有太大关系</li>
+<li>这里“现在的人界政府”指的就是UnderWorld中的人界政府</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0ctlF.png" alt="P0ctlF.png"></p>
+<ul>
+<li>这里重新提一下猫妖<blockquote>
+<p>猫妖擅长驯化魔兽、敏捷、视力高</p>
+</blockquote>
+</li>
+<li>所以，诗乃作为狙击手（暂且这么叫吧），西莉卡和爱丽丝为了驯化都选了猫妖。</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0cg6e.png" alt="P0cg6e.png"></p>
+<ul>
+<li>从这里，就到了我最感兴趣的情节了-桐人老爷的修罗场</li>
+<li>当SAO篇和Alicezation篇的女主角碰到一起，会发生什么呢？？？</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0cItP.png" alt="P0cItP.png"></p>
+<ul>
+<li>桐人老爷可真是幸福呢，左拥右抱可还行，不过这里也是可以看出桐人老爷的冷静【表面慌得一批，实则比老狗还稳.jpg】</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/08/02/P0cqXQ.png" alt="P0cqXQ.png"></p>
+<ul>
+<li>注意这段文字：<blockquote>
+<p>被染成红色的不是天空，而是以猛烈的势头布满天空的镶嵌六边形【Hexagon Pattern】。<br>而交替出现在六边形表面的，则是〖Warning〗和〖System Announcement〗这样的文字。</p>
+</blockquote>
+</li>
+<li>这一天，SAO的玩家们终于想起了四年前被那个[阴魂不散的男人]所支配的恐惧…</li>
+<li>但是，这并不代表着这一定是那个男人引起的，因为后面也没有了</li>
+</ul>
+<h1 id="EP4-后记"><a href="#EP4-后记" class="headerlink" title="EP4 - 后记"></a>EP4 - 后记</h1><p>对！没有了。不过从先导来看，应该挺有趣的…不过把Augma搬进来也是够了，<br>川原的脑洞被挖空了…</p>
+<p>不过，按道理来说，应该九、十月份21册就出了…敬请期待吧…</p>
+<h1 id="EP5-鸣谢"><a href="#EP5-鸣谢" class="headerlink" title="EP5 - 鸣谢"></a>EP5 - 鸣谢</h1><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tieba.baidu.com/f?kw=%E5%88%80%E5%89%91%E7%A5%9E%E5%9F%9F&amp;ie=utf-8">百度贴吧-刀剑神域吧</a></li>
+<li><a target="_blank" rel="noopener" href="http://alfheim.cc">Alfheim.cc</a></li>
+<li><a target="_blank" rel="noopener" href="https://water_mi.coding.me/Blog-Hexo">water_mi’s Blog</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>water_mi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://blog.water-mi.com/2018/08/01/SAO-21/" title="刀剑神域第21册先导吐槽">https://blog.water-mi.com/2018/08/01/SAO-21/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99-%E5%90%90%E6%A7%BD/" rel="tag"><i class="fa fa-tag"></i> [随便写写]吐槽</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/Welcome/" rel="next" title="欢迎">
+                <i class="fa fa-chevron-left"></i> 欢迎
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/19/Problem-POJ-1014/" rel="prev" title="POJ1014 Dividing">
+                POJ1014 Dividing <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/sources/avatar.png"
+                alt="water_mi"/>
+            
+              <p class="site-author-name" itemprop="name">water_mi</p>
+              <div class="site-description motion-element" itemprop="description">接下来的日子里，要更加努力</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/water-mi" title="GitHub &rarr; https://github.com/water-mi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:13787781331@163.com" title="E-Mail &rarr; mailto:13787781331@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EP0-%E5%85%88%E5%AF%BC%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">EP0 - 先导链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EP1-%E6%A0%87%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">EP1 - 标题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EP2-%E8%AE%BE%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">EP2 - 设定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EP3-%E5%8E%9F%E6%96%87"><span class="nav-number">4.</span> <span class="nav-text">EP3 - 原文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EP4-%E5%90%8E%E8%AE%B0"><span class="nav-number">5.</span> <span class="nav-text">EP4 - 后记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EP5-%E9%B8%A3%E8%B0%A2"><span class="nav-number">6.</span> <span class="nav-text">EP5 - 鸣谢</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">water_mi</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">151k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">4:35</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='1,1,1' opacity='0.8' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css"/>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '99c3b218e0b4321108cb',
+    clientSecret: 'fa4b5350aea691b728f36b3bc8fe22559d688817',
+    repo: 'Next-Comment',
+    owner: 'water-mi',
+    admin: ['water-mi'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css"/>
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.1.2"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

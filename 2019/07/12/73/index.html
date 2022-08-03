@@ -1,23 +1,1350 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ page.title }} | {{ title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
 
-{% block content %}
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":32,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script src="/sources/prism.js"></script>
+<link rel="stylesheet" href="/sources/prism.css"/>
+<link rel="stylesheet" href="/sources/next_custom.css"/>
+<link href="/katexify/katex.min.css" rel="stylesheet" />
+
+
+  <meta name="description" content="7.12所讲的题目的落实，涉及图论、计数和思维题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.12专题分享总结">
+<meta property="og:url" content="https://blog.water-mi.com/2019/07/12/73/index.html">
+<meta property="og:site_name" content="water_mi&#39;s Blog">
+<meta property="og:description" content="7.12所讲的题目的落实，涉及图论、计数和思维题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-12T13:30:01.000Z">
+<meta property="article:modified_time" content="2020-01-19T12:26:00.491Z">
+<meta property="article:author" content="water_mi">
+<meta property="article:tag" content="[随便写写]总结">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.water-mi.com/2019/07/12/73/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>7.12专题分享总结 | water_mi's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">water_mi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Have a good time!</p>
+      
+    
+    
   </div>
 
-{% endblock %}
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">56</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">3</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">81</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br/>友链</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br/>站点地图</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/water-mi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.water-mi.com/2019/07/12/73/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="water_mi"/>
+      <meta itemprop="description" content="接下来的日子里，要更加努力"/>
+      <meta itemprop="image" content="/sources/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="water_mi's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.12专题分享总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-12 21:30:01" itemprop="dateCreated datePublished" datetime="2019-07-12T21:30:01+08:00">2019-07-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-19 20:26:00" itemprop="dateModified" datetime="2020-01-19T20:26:00+08:00">2020-01-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Solution/" itemprop="url" rel="index"><span itemprop="name">Solution</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>7.12所讲的题目的落实，涉及图论、计数和思维题。</p>
+<span id="more"></span>
+<h3 id="T1-LuoguP4609"><a href="#T1-LuoguP4609" class="headerlink" title="T1-LuoguP4609"></a>T1-LuoguP4609</h3><p>　　第一类斯特林数＋组合数</p>
+<p>　　题解见<a href="https://blog.water-mi.com/2019/01/17/41/">之前的博客</a></p>
+<h3 id="间章-关于第二类斯特林数某一公式的证明"><a href="#间章-关于第二类斯特林数某一公式的证明" class="headerlink" title="间章-关于第二类斯特林数某一公式的证明"></a>间章-关于第二类斯特林数某一公式的证明</h3><script type="math/tex; mode=display">
+{\Large n^m}={\Large\sum\limits_{k=0}^m}
+\begin{pmatrix}
+n \\ k
+\end{pmatrix}
+\begin{Bmatrix}
+m \\ k
+\end{Bmatrix}
+{\large k!}</script><p>证明：</p>
+<p>　　将$m$个本质不同的小球放入$n$个本质不同的盒子（可空）中，显然是$n^m$。</p>
+<p>　　另一种思路表示先枚举$k$个盒子非空，乘上$\begin{pmatrix} n\k\end{pmatrix}$表示从$n$个盒子中选出$k$个盒子，将这些球放进这$k$个盒子的代价是${\begin{Bmatrix}m\k\end{Bmatrix}}\times k!$，乘上阶乘是因为盒子本质不同。</p>
+<blockquote>
+<p>和 $n$ 有关的只有 $C_n^k$，而这东西是可以利用杨辉三角快速转移的。常见于$\text{DP}$题以及多项式题。</p>
+</blockquote>
+<h3 id="T2-Bzoj4710"><a href="#T2-Bzoj4710" class="headerlink" title="T2-Bzoj4710"></a>T2-Bzoj4710</h3><p>　　容斥原理＋组合数</p>
+<p>　　题解见<a href="https://blog.water-mi.com/2019/01/28/62/">之前的博客</a></p>
+<h3 id="T3-CodeForces-961G"><a href="#T3-CodeForces-961G" class="headerlink" title="T3-CodeForces 961G"></a>T3-CodeForces 961G</h3><p>　　不难发现$Ans=p\sum val_i$（因为每个元素本身的权重是相同的），其中$p$是一个待定的系数。</p>
+<p>　　有一种斯特林反演的方法，但是式子推起来很麻烦。</p>
+<p>　　另一种思路是考虑划分集合后，因为$W(S)=|S|\cdot\sum_{i\in S}val_i$，故对于元素$i\in S$可以当做$S$中的每个元素都对$i$产生了一次贡献，所以我们只要枚举每一个数对$i$的贡献即可。</p>
+<p>　　$i$对自己的贡献显然是$\begin{Bmatrix}n\k\end{Bmatrix}$，剩下的$n-1$个数的贡献则是$(n-1)\times\begin{Bmatrix}n-1\k\end{Bmatrix}$。</p>
+<p>　　其中$\begin{Bmatrix}n-1\k\end{Bmatrix}$表示枚举的那个数和$i$在同一集合的方案数。</p>
+<p>　　所以系数$p=\begin{Bmatrix}n\k\end{Bmatrix}+(n-1)\times\begin{Bmatrix}n-1\k\end{Bmatrix}$</p>
+<h3 id="T4-CodeChef-CNTDSETS"><a href="#T4-CodeChef-CNTDSETS" class="headerlink" title="T4-CodeChef CNTDSETS"></a>T4-CodeChef CNTDSETS</h3><p>　　将平移的限制转化为每一维都存在该维坐标为$0$的点，距离的限制转化为至少有一维的最大坐标为$d$。</p>
+<p>考虑计算最大值小于等于$x$的方案$f(x)$，容斥“每一维都存在$0$”。答案就是：</p>
+<script type="math/tex; mode=display">
+f(d)-f(d-1),f(d)=\sum_{i=0}^n(-1)^i\times 
+\begin{pmatrix}
+n\\i
+\end{pmatrix}
+\times2^{d^i(d+1)^{n-i}}</script><h3 id="T5-CodeForces-892E"><a href="#T5-CodeForces-892E" class="headerlink" title="T5-CodeForces 892E"></a>T5-CodeForces 892E</h3><p>　　考虑最小生成树$\text{Kruskal}$的一个性质，即不同权值的边是互不影响的。对于每一次询问，我们只需考虑同种权值的边能否出现在一棵生成树上。</p>
+<p>　　预处理处每一种权值在处理之前该边对应的两点所在的联通块，然后对于每一次询问，先还原询问的每条边的连接状态，再去按照$\text{Kruskal}$连接所对应的的联通块，如果不会连接到相同的联通块，则是可行的。</p>
+<h3 id="T6-Bzoj4886"><a href="#T6-Bzoj4886" class="headerlink" title="T6-Bzoj4886"></a>T6-Bzoj4886</h3><p>　　其实并不用考虑严格递增的问题，我们只需要使得底不重复出现就行了。</p>
+<p>　　考虑一种建图方式，对于一个长方形$(a,b)$，建立一条$a$与$b$的无向边，考虑给边定向，则入点表示选其作为一个底，出点表示作为一条高，由于题目限制，每个点的入度必须为$1$，所以贡献为$(\text{degree}-1)\times \text{val}$。</p>
+<p>​    　因为只有$n$个点$n$条边，所以一个联通块的形态要么是树要么是基环树，然而树的根节点贡献是$\text{degree}\times \text{val}$，所以我们对于树要使权值最大的点为根（你可以认为其入度为$1$，但并不减少贡献）。</p>
+<h3 id="T7-LuoguP4366"><a href="#T7-LuoguP4366" class="headerlink" title="T7-LuoguP4366"></a>T7-LuoguP4366</h3><p>　　主要解决边数很多的问题，剩下的细节就只有原图单向边和不要用优先队列就好了。</p>
+<p>　　考虑到异或的性质，只需要对于每一个节点$i$，枚举每个二进制位$p$，连边$(i,i\oplus(1&lt;&lt;p),(1&lt;&lt;p)*c)$即可，边数缩减到$O(nlogn+m)$。</p>
+<h3 id="T8-LuoguP1407"><a href="#T8-LuoguP1407" class="headerlink" title="T8-LuoguP1407"></a>T8-LuoguP1407</h3><p>　　考虑给边定向，对于婚姻关系，男向女连边，对于曾交往过的关系，女向男连边，如果一对婚姻关系中的两人在同一个强连通分量里面，则这对关系是不稳定的。</p>
+<p>　　考虑这样做为什么是对的，一对不稳定的稳定关系必然处在一个环满足这个环上的边按婚姻－交往－婚姻－交往环形排列，所以以上联边方法可以保证将答案最大化。</p>
+<h3 id="T9-Atcoder2134"><a href="#T9-Atcoder2134" class="headerlink" title="T9-Atcoder2134"></a>T9-Atcoder2134</h3><p>　　按照原题连边的话边会达到$O(nq)$，所以我们考虑如何缩小边的规模，考虑一次批量加边对$\text{MST}$的贡献，假设我们已经把边$(x,y,z)$按照$\text{Kruskal}$的方式处理完毕，则表示$(x,y)$两点在同一联通块内，所以我们不妨考虑将边$(y,x+1,z+1)$等效变为$(x,x+1,z+1)$，对于原图中的一次批量加边操作，设$d[i]$表示$(i,i+1)$的最小边权，每次仅需更新$d[x],d[y]$。（注意边$(x,y,z)$是无法等效的，直接加进即可）。</p>
+<p>　　最后两次环形更新$d[i]=min(d[i],d[i-1]+2)$，更新两次是因为第一次中的最末尾的$d$可能更新最头的$d$。</p>
+<p>　　然后将$(i,i+1,d[i])$加入图中，求出$\text{MST}$。</p>
+<h3 id="T10-Bzoj1922"><a href="#T10-Bzoj1922" class="headerlink" title="T10-Bzoj1922"></a>T10-Bzoj1922</h3><p>　　一边跑$\text{Dijkstra}$，一边跑拓扑排序即可，只有一个点的保护点都出堆，该点才能入堆。</p>
+<h3 id="T11-Uoj67"><a href="#T11-Uoj67" class="headerlink" title="T11-Uoj67"></a>T11-Uoj67</h3><p>　　删去一个点后只剩$n-1$个点，树有$n-2$条边，所以原图中有$m-(n-2)$条连边的非割点就是答案。</p>
+<h3 id="T12-Bzoj4289"><a href="#T12-Bzoj4289" class="headerlink" title="T12-Bzoj4289"></a>T12-Bzoj4289</h3><p>　　考虑一种网络流式的建图方式—补流，有这样一个东西$max(a,b)=a+max(b-a,0)$。</p>
+<p>　　所以对于每一个点，我们经过时可以加上它入边的权值即$a$，然后考虑在点的内部补差值。</p>
+<p>　　具体来说，对于每一个点，将其所有的边从小到大排序，从小往大连差价边，从大往小连$0$边，也就是说，实际上原图的$n$个点并不用加入图中，直接将拆出来的两个点$(i,i+m)$间连权值为$w$的边，然后将$i$分配到编号小的点，$i+m$分配给编号大的点，作上述操作。</p>
+<p>　　最后考虑怎么求出最短路，对于分配给$1$的出边，新建源点向$i$连边权为其$w$的边，对于分配给$n$的入边，向$i+m$连权值为$0$的边。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>water_mi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://blog.water-mi.com/2019/07/12/73/" title="7.12专题分享总结">https://blog.water-mi.com/2019/07/12/73/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99-%E6%80%BB%E7%BB%93/" rel="tag"><i class="fa fa-tag"></i> [随便写写]总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/23/72/" rel="next" title="近期考试的总结">
+                <i class="fa fa-chevron-left"></i> 近期考试的总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/13/74/" rel="prev" title="线性基习题集">
+                线性基习题集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/sources/avatar.png"
+                alt="water_mi"/>
+            
+              <p class="site-author-name" itemprop="name">water_mi</p>
+              <div class="site-description motion-element" itemprop="description">接下来的日子里，要更加努力</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/water-mi" title="GitHub &rarr; https://github.com/water-mi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:13787781331@163.com" title="E-Mail &rarr; mailto:13787781331@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#T1-LuoguP4609"><span class="nav-number">1.</span> <span class="nav-text">T1-LuoguP4609</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%B4%E7%AB%A0-%E5%85%B3%E4%BA%8E%E7%AC%AC%E4%BA%8C%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E6%9F%90%E4%B8%80%E5%85%AC%E5%BC%8F%E7%9A%84%E8%AF%81%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">间章-关于第二类斯特林数某一公式的证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T2-Bzoj4710"><span class="nav-number">3.</span> <span class="nav-text">T2-Bzoj4710</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T3-CodeForces-961G"><span class="nav-number">4.</span> <span class="nav-text">T3-CodeForces 961G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T4-CodeChef-CNTDSETS"><span class="nav-number">5.</span> <span class="nav-text">T4-CodeChef CNTDSETS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T5-CodeForces-892E"><span class="nav-number">6.</span> <span class="nav-text">T5-CodeForces 892E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T6-Bzoj4886"><span class="nav-number">7.</span> <span class="nav-text">T6-Bzoj4886</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T7-LuoguP4366"><span class="nav-number">8.</span> <span class="nav-text">T7-LuoguP4366</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T8-LuoguP1407"><span class="nav-number">9.</span> <span class="nav-text">T8-LuoguP1407</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T9-Atcoder2134"><span class="nav-number">10.</span> <span class="nav-text">T9-Atcoder2134</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T10-Bzoj1922"><span class="nav-number">11.</span> <span class="nav-text">T10-Bzoj1922</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T11-Uoj67"><span class="nav-number">12.</span> <span class="nav-text">T11-Uoj67</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#T12-Bzoj4289"><span class="nav-number">13.</span> <span class="nav-text">T12-Bzoj4289</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">water_mi</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">151k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">4:35</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='1,1,1' opacity='0.8' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css"/>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '99c3b218e0b4321108cb',
+    clientSecret: 'fa4b5350aea691b728f36b3bc8fe22559d688817',
+    repo: 'Next-Comment',
+    owner: 'water-mi',
+    admin: ['water-mi'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css"/>
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.1.2"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

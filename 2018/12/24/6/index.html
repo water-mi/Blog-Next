@@ -1,23 +1,1521 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ page.title }} | {{ title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
 
-{% block content %}
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":32,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script src="/sources/prism.js"></script>
+<link rel="stylesheet" href="/sources/prism.css"/>
+<link rel="stylesheet" href="/sources/next_custom.css"/>
+<link href="/katexify/katex.min.css" rel="stylesheet" />
+
+
+  <meta name="description" content="这里是简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cdq分治学习笔记">
+<meta property="og:url" content="https://blog.water-mi.com/2018/12/24/6/index.html">
+<meta property="og:site_name" content="water_mi&#39;s Blog">
+<meta property="og:description" content="这里是简介">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-24T03:25:18.000Z">
+<meta property="article:modified_time" content="2020-01-19T12:26:00.481Z">
+<meta property="article:author" content="water_mi">
+<meta property="article:tag" content="[C++]数据结构-cdq分治">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://blog.water-mi.com/2018/12/24/6/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>cdq分治学习笔记 | water_mi's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 6.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">water_mi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Have a good time!</p>
+      
+    
+    
   </div>
 
-{% endblock %}
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">56</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">3</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">81</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-friends">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/friends/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br/>友链</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br/>站点地图</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/water-mi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.water-mi.com/2018/12/24/6/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="water_mi"/>
+      <meta itemprop="description" content="接下来的日子里，要更加努力"/>
+      <meta itemprop="image" content="/sources/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="water_mi's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">cdq分治学习笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-24 11:25:18" itemprop="dateCreated datePublished" datetime="2018-12-24T11:25:18+08:00">2018-12-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-19 20:26:00" itemprop="dateModified" datetime="2020-01-19T20:26:00+08:00">2020-01-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">11 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里是简介<br><span id="more"></span></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>感谢$__stdcall$的讲解，感谢伟大的导师$_tham$提供一系列练手题</p>
+<h2 id="cdq分治是什么？"><a href="#cdq分治是什么？" class="headerlink" title="cdq分治是什么？"></a>cdq分治是什么？</h2><p>国人（<del>陈丹琦</del>）引进的算法，不同于一般的分治，我们常说的分治是将问题分成互不影响的几个区间，递归进行处理，而所谓$cdq$分治，在处理一个区间时，还要计算它对其他区间的贡献。</p>
+<h2 id="二维偏序问题"><a href="#二维偏序问题" class="headerlink" title="二维偏序问题"></a>二维偏序问题</h2><blockquote>
+<p>给定$n$个二元组$[a,b]$，$m$次询问，每次给定其中的一个二元组$[c,d]$，求满足条件$c&lt;a\&amp;d&lt;b$的二元组的个数</p>
+</blockquote>
+<p>不知道怎么做？逆序对你总会求吧？逆序对就是一种经典的二维偏序问题，我们不妨这样转换逆序对问题：</p>
+<blockquote>
+<p>给定$n$个数，定义一个二元组为$[$元素下标，元素值$]$，则共有$n$个这样的二元组</p>
+</blockquote>
+<p>我们只需将约束条件改为：$c<a\&d>b$就行了。</p>
+<p>那么，解决二维偏序的一般模式，也只需要改一下合并时的那一句话就好了。</p>
+<p>PS：啊？你忘了怎么用归并排序求逆序对？<a target="_blank" rel="noopener" href="https://www.cnblogs.com/water-mi/p/9811731.html">戳我</a></p>
+<p>相同的，我们也可以用树状数组来求解。复杂度同样为$O(nlogn)$</p>
+<hr>
+<p>既然我们能用树状数组来解决用$cdq$分治的题，那我们能不能用$cdq$分治来解决树状数组的题目呢？当然可以，比如这道：<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3374">Luogu3374 树状数组1</a></p>
+<blockquote>
+<p>给定一个$n​$个元素的序列$a​$，初始值全部为$0​$，对这个序列进行以下两种操作</p>
+<p>操作$1$：格式为$1\ x\ k$，把所有位置$x$的元素加上$k$</p>
+<p>操作$2$：格式为$2 x y$，求出区间$[x,y]$内所有元素的和。</p>
+</blockquote>
+<p>这显然是一道树状数组模板题，考虑如何用$cdq$分治来解决它。</p>
+<p>我们不妨以修改的时间为第一关键字，修改元素的位置为第二关键字。由于时间已经有序，我们定义结构体包含$3$个元素：$opt,ind,val$，其中$ind$表示操作的位置，$opt$为$1$表示修改，$val$表示“加上的值”。而对于查询，我们用前缀和的思想把他分解成两个操作：$sum[1,y]-sum[1,x-1]$，即分解成两次前缀和的查询。在合并的过程中，$opt$为$2$表示遇到了一个查询的左端点$x-1$，对结果作负贡献，$opt$为$3$表示遇到了一个查询的右端点$y$，对结果作正贡献，$val$表示“是第几个查询”。这样，我们就把每个操作转换成了带有附加信息的有序对(时间，位置)，然后对整个序列进行$cdq$分治。</p>
+<pre><code class="lang-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using std::min;
+using std::max;
+using std::swap;
+using std::sort;
+typedef long long ll;
+
+const int N = 5e5 + 10, M = 5e5 + 10;
+int n, m, aid, qid;
+ll ans[M];
+struct Query &#123;
+    int ind, opt; ll val;
+    inline bool operator &lt; (const Query a) const &#123;
+        return ind == a.ind ? opt &lt; a.opt : ind &lt; a.ind;
+    &#125;
+&#125;q[(M &lt;&lt; 1) + N], tmp[(M &lt;&lt; 1) + N];
+
+inline void cdq (int l, int r) &#123;
+    if (l == r) return ;
+    int mid = (l + r) &gt;&gt; 1;
+    cdq(l, mid), cdq(mid + 1, r);
+    int i = l, j = mid + 1, p = l; ll sum = 0;
+    while (i &lt;= mid &amp;&amp; j &lt;= r)
+        if (q[i] &lt; q[j]) &#123;
+            if (q[i].opt == 1) sum += q[i].val;
+            tmp[p++] = q[i++];
+        &#125; else &#123;
+            if (q[j].opt == 2) ans[q[j].val] -= sum;
+            if (q[j].opt == 3) ans[q[j].val] += sum;
+            tmp[p++] = q[j++];
+        &#125;
+    while (i &lt;= mid) &#123; if (q[i].opt == 1) sum += q[i].val; tmp[p++] = q[i++]; &#125;
+    while (j &lt;= r) &#123;
+        if (q[j].opt == 2) ans[q[j].val] -= sum;
+        if (q[j].opt == 3) ans[q[j].val] += sum;
+        tmp[p++] = q[j++];
+    &#125;
+    for (int k = l; k &lt;= r; ++k) q[k] = tmp[k];    
+&#125;
+
+int main () &#123;
+    scanf (&quot;%d%d&quot;, &amp;n, &amp;m);
+    for (int i = 1; i &lt;= n; ++i) &#123;
+        q[++qid].ind = i, q[qid].opt = 1;
+        scanf(&quot;%lld&quot;, &amp;q[qid].val);
+    &#125;
+    int opt, ind, l, r; ll val;
+    for (int i = 1; i &lt;= m; ++i) &#123;
+        scanf(&quot;%d&quot;, &amp;opt);
+        if (opt == 1) scanf(&quot;%d%lld&quot;, &amp;ind, &amp;val), q[++qid] = (Query)&#123;ind, 1, val&#125;;
+        else &#123;
+            scanf (&quot;%d%d&quot;, &amp;l, &amp;r);
+            q[++qid] = (Query)&#123;l - 1, 2, ++aid&#125;, q[++qid] = (Query)&#123;r, 3, aid&#125;;
+        &#125;
+    &#125;
+    cdq(1, qid);
+    for (int i = 1; i &lt;= aid; ++i)
+        printf(&quot;%lld\n&quot;, ans[i]);
+    return 0;
+&#125;
+</code></pre>
+<hr>
+<h2 id="三维偏序问题"><a href="#三维偏序问题" class="headerlink" title="三维偏序问题"></a>三维偏序问题</h2><blockquote>
+<p>给定$n$个三元组$[a,b,c]$，$m$次询问，每次给定其中的一个二元组$[d,e,f]$，求满足条件$d&lt;a\&amp;e&lt;b\&amp;f&lt;c$的二元组的个数</p>
+</blockquote>
+<p>相同的，我们也可以采取用其他方法来解决三位偏序问题，如$bitset$、$KD\ Tree$、树套树等…比如我们可以以$a$为关键字排序，同时用$BIT$套平衡树来维护剩下的两个元素。</p>
+<p>接着考虑如何用$cdq$分治来解决这个问题，我们可以考虑先以$a$为关键字对数组排序，这样我们的问题就成了维护后两个元素了。接下来，我们以一个经典的三维偏序题：陌上花开来做具体说明（由于这道题较为经典，在各大$OJ$都能找到，不给出链接）</p>
+<hr>
+<h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><blockquote>
+<p><strong>有n朵花，每朵花有三个属性：花形(s)、颜色(c)、气味(m)，由三个整数表示。现要对每朵花评级，一朵花的级别是它拥有的美丽能超过的花的数量。定义一朵花A比花B要美丽，当且仅Sa&gt;=Sb,Ca&gt;=Cb,Ma&gt;=Mb。显然，两朵花可能有同样的属性。需要统计出评出每个等级的花的数量。</strong></p>
+</blockquote>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li>就如刚才所说的，以$a$为关键字进行排序</li>
+</ol>
+<pre><code class="lang-cpp">struct Node &#123;
+    int a, b, c, mult, ans;
+    inline void Init() &#123;
+        read(a), read(b), read(c);
+    &#125;
+&#125; v[N], d[N];
+inline bool cmpx (Node x, Node y) &#123;
+    return (x.a &lt; y.a) || (x.a == y.a &amp;&amp; x.b &lt; y.b) || (x.a == y.a &amp;&amp; x.b == y.b &amp;&amp; x.c &lt; y.c);
+&#125;
+int main () &#123;
+    read(n), read(k);
+    for (int i = 1; i &lt;= n; ++i) v[i].Init();
+    sort(&amp;v[1], &amp;v[n + 1], cmpx);
+&#125;
+</code></pre>
+<ol>
+<li>然后，我们会发现，普通的三位偏序只用处理小于，而不是小于等于，根据题意，完全相同属性的花是不计算在内的，所以我们得考虑将其去重。</li>
+</ol>
+<pre><code class="lang-cpp">for (int i = 1; i &lt;= n; ++i) &#123;
+    ++mul;//相同元素的个数
+    //这里的异或你可以理解为不等于，由于之前已经排过序（见函数cmpx），可以线性比较，mult表示重复元素的个数
+    if ((v[i].a ^ v[i + 1].a) || (v[i].b ^ v[i + 1].b) || (v[i].c ^ v[i + 1].c))
+        d[++m] = v[i], d[m].mult = mul, mul = 0;
+&#125;
+</code></pre>
+<ol>
+<li>接着，我们考虑如何进行$cdq$分治，同样是在计算左区间时，处理右区间的询问，不妨采用$two-pointers$，两个指针$i,j$分别指向左右两个区间，这时候我们以$b$为关键字进行比较，如果$d[i].b&lt;=d[j].b$，则将$d[i].c$插入权值$BIT$中，反之则在$BIT$中查询比$d[j].c$小的数的个数，作正贡献。在两个区间都扫完后，我们要考虑清空$BIT$，防止在接下来的递归回溯中被添加多次。</li>
+</ol>
+<pre><code class="lang-cpp">inline bool cmpy (Node x, Node y) &#123;
+    return (x.b &lt; y.b) || (x.b == y.b &amp;&amp; x.c &lt; y.c);
+&#125;
+inline void cdq (int l, int r) &#123;
+    if (l == r) return ;
+    int mid = (l + r) &gt;&gt; 1;
+    cdq(l, mid), cdq(mid + 1, r);
+    int i = l;
+    for (int j = mid + 1; j &lt;= r; ++j) &#123;
+        while (d[i].b &lt;= d[j].b &amp;&amp; i &lt;= mid) update(d[i].c, d[i].mult), ++i;
+        d[j].ans += query(d[j].c);
+        //ans表示小于等于它的个数
+    &#125;
+    //清空BIT
+    for (int k = l; k &lt; i; ++k)
+        update(d[k].c, -d[k].mult);
+    inplace_merge(&amp;d[l], &amp;d[mid + 1], &amp;d[r + 1], cmpy);
+    //这个函数表示将区间[l,mid+1)和[mid+1,r+1)按照cmpy方法合并
+&#125;
+</code></pre>
+<ol>
+<li>计算答案。</li>
+</ol>
+<pre><code class="lang-cpp">for (int i = 1; i &lt;= m; ++i) ans[d[i].ans + d[i].mult - 1] += d[i].mult;
+for (int i = 0; i &lt; n; ++i) printf(&quot;%d\n&quot;, ans[i]);
+</code></pre>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-cpp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using std::sort;
+using std::inplace_merge;
+typedef long long ll;
+
+template&lt;typename T&gt;
+inline void read (T &amp;x) &#123;
+    char ch = getchar(); int flag = 1;
+    while(ch != &#39;-&#39; &amp;&amp; (ch &lt; &#39;0&#39; || ch &gt; &#39;9&#39;)) ch = getchar();
+    if (ch == &#39;-&#39;) flag = -flag, ch = getchar();
+    while(ch &gt;= &#39;0&#39; &amp;&amp; ch &lt;= &#39;9&#39;) x = x * 10 + ch - &#39;0&#39;, ch = getchar();
+    x *= flag;
+&#125;
+
+const int N = 1e5 + 10, K = 2e5 + 10;
+int n, m, k, mul, ans[N], bit[K];
+struct Node &#123;
+    int a, b, c, mult, ans;
+    inline void Init() &#123;
+    read(a), read(b), read(c);
+    &#125;
+&#125; v[N], d[N];
+inline bool cmpx (Node x, Node y) &#123;
+    return (x.a &lt; y.a) || (x.a == y.a &amp;&amp; x.b &lt; y.b) || (x.a == y.a &amp;&amp; x.b == y.b &amp;&amp; x.c &lt; y.c);
+&#125;
+inline bool cmpy (Node x, Node y) &#123;
+    return (x.b &lt; y.b) || (x.b == y.b &amp;&amp; x.c &lt; y.c);
+&#125;
+
+inline int lowbit (int x) &#123; return x &amp; (-x); &#125;
+inline void update (int pos, int val) &#123;
+    while (pos &lt;= k) bit[pos] += val, pos += lowbit(pos);
+&#125;
+inline int query (int pos) &#123;
+    int val = 0;
+    while (pos) val += bit[pos], pos -= lowbit(pos);
+    return val;
+&#125;
+
+inline void cdq (int l, int r) &#123;
+    if (l == r) return ;
+    int mid = (l + r) &gt;&gt; 1;
+    cdq(l, mid), cdq(mid + 1, r);
+    int i = l;
+    for (int j = mid + 1; j &lt;= r; ++j) &#123;
+        while (d[i].b &lt;= d[j].b &amp;&amp; i &lt;= mid) update(d[i].c, d[i].mult), ++i;
+        d[j].ans += query(d[j].c);
+    &#125;
+    for (int k = l; k &lt; i; ++k)   
+        update(d[k].c, -d[k].mult);
+    inplace_merge(&amp;d[l], &amp;d[mid + 1], &amp;d[r + 1], cmpy);
+&#125;
+
+int main () &#123;
+    read(n), read(k);
+    for (int i = 1; i &lt;= n; ++i) v[i].Init();
+    sort(&amp;v[1], &amp;v[n + 1], cmpx);
+    for (int i = 1; i &lt;= n; ++i) &#123;
+        ++mul;
+        if ((v[i].a ^ v[i + 1].a) || (v[i].b ^ v[i + 1].b) || (v[i].c ^ v[i + 1].c))
+            d[++m] = v[i], d[m].mult = mul, mul = 0;
+    &#125;
+    cdq(1, m);
+    for (int i = 1; i &lt;= m; ++i) ans[d[i].ans + d[i].mult - 1] += d[i].mult;
+    for (int i = 0; i &lt; n; ++i) printf(&quot;%d\n&quot;, ans[i]);
+    return 0;
+&#125;
+</code></pre>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>water_mi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://blog.water-mi.com/2018/12/24/6/" title="cdq分治学习笔记">https://blog.water-mi.com/2018/12/24/6/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-cdq%E5%88%86%E6%B2%BB/" rel="tag"><i class="fa fa-tag"></i> [C++]数据结构-cdq分治</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/24/5/" rel="next" title="树形背包学习笔记">
+                <i class="fa fa-chevron-left"></i> 树形背包学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/24/7/" rel="prev" title="Luogu P2146 软件包管理器（树链剖分+线段树）">
+                Luogu P2146 软件包管理器（树链剖分+线段树） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/sources/avatar.png"
+                alt="water_mi"/>
+            
+              <p class="site-author-name" itemprop="name">water_mi</p>
+              <div class="site-description motion-element" itemprop="description">接下来的日子里，要更加努力</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/%20%7C%7C%20th">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/%20%7C%7C%20tags">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/water-mi" title="GitHub &rarr; https://github.com/water-mi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:13787781331@163.com" title="E-Mail &rarr; mailto:13787781331@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cdq%E5%88%86%E6%B2%BB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">cdq分治是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">二维偏序问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">三维偏序问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2"><span class="nav-number">4.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">water_mi</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">151k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">4:35</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='1,1,1' opacity='0.8' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css"/>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '99c3b218e0b4321108cb',
+    clientSecret: 'fa4b5350aea691b728f36b3bc8fe22559d688817',
+    repo: 'Next-Comment',
+    owner: 'water-mi',
+    admin: ['water-mi'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css"/>
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/algolia-search.js?v=7.1.2"></script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
